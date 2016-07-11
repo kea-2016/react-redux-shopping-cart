@@ -11,7 +11,10 @@ class CartSummary extends Component {
         <h4>Shopping Cart</h4>
         <div className='products'>
           {products.map((product, idx) => {
-            return <div key={idx}>{product.get('name')}</div>
+            return (
+              <div key={idx}>{product.get('name')} | {product.get('quantity')} |
+              <button > Delete </button>
+              </div>)
           })}
         </div>
       </div>
@@ -25,7 +28,18 @@ function mapStateToProps(state) {
     cart: state.get('cart')
   };
 }
+function mapDispatchToProps(dispatch) {
+  return {
+    removeFromCart: (id) => {
+      dispatch({
+        type: 'REMOVE_FROM_CART',
+        id: parseInt(id)
+      })
+    }
+  }
+}
 
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(CartSummary)
