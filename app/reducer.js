@@ -8,7 +8,8 @@ const INITIAL_STATE = fromJS({
     {id: 4, name:'car', price: 5000 },
     {id: 5, name:'falcon', price: 70000.50 }
   ],
-  cart: [1,4]
+  cart: [1,4],
+  wishlist: []
 })
 
 // Storing action type in a constant
@@ -30,13 +31,38 @@ export const clearCart = () => {
   }
 }
 
+// Storing action type in a constant
+export const ADD_PRODUCT_TO_WISHLIST = 'ADD_PRODUCT_TO_WISHLIST'
+// This is an action creator that RETURNS an action (object).
+export const addProductToWishList = (id) => {
+  return {
+    id,
+    type: ADD_PRODUCT_TO_WISHLIST
+  }
+}
+
+// Storing action type in a constant
+export const REMOVE_PRODUCT_FROM_WISHLIST = 'REMOVE_PRODUCT_FROM_WISHLIST'
+// This is an action creator that RETURNS an action (object).
+export const removeProductFromWishList = (id) => {
+  return {
+    id,
+    type: REMOVE_PRODUCT_FROM_WISHLIST
+  }
+}
+
 export default (state = INITIAL_STATE, action) => {
   switch(action.type) {
     case 'ADD_PRODUCT_TO_CART':
       return state.set('cart', state.get('cart').push(action.id))
+    case 'ADD_PRODUCT_TO_WISHLIST':
+      return state.set('wishlist', state.get('wishlist').push(action.id))
     case 'REMOVE_PRODUCT_FROM_CART':
       // state.get('cart') is a LIST not an array. delete() deletes the index of the list.
       return state.set('cart', state.get('cart').delete(action.id))
+    case 'REMOVE_PRODUCT_FROM_WISHLIST':
+      // state.get('wishlist') is a LIST not an array. delete() deletes the index of the list.
+      return state.set('wishlist', state.get('wishlist').delete(action.id))
     case 'CLEAR_CART':
       // sets the 'cart' part of the state to be a new List (as defined by immutable.js)
       return state.set('cart', List())

@@ -5,8 +5,14 @@ main {
   margin-bottom:20px;
 }
 
+#left {
+  width: 25%;
+  float: left;
+
+}
+
 #main {
-  width: 75%;
+  width: 50%;
   float: left;
 }
 #side {
