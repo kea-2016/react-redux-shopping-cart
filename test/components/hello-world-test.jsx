@@ -10,7 +10,7 @@ import HelloWorld from '../../app/components/hello-world.jsx'
 
 describe('<HelloWorld />', () => {
   it('says hello world', () => {
-    const wrapper = shallow(<HelloWorld />) 
+    const wrapper = shallow(<HelloWorld />)
     expect(wrapper).to.contain('Hello World')
   })
 })
