@@ -1,12 +1,13 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router'
 
-export default class HelloWorld extends Component {
+export default class Checkout extends Component {
 
   render() {
     return (
       <div>
-        Hello World
+        <h1>Thanks for checking out with us!</h1>
+        <Link to='/'>Back home</Link>
       </div>
     )
   }

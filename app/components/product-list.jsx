@@ -1,14 +1,26 @@
 import React, {Component} from 'react'
 import ProductSummary from './product-summary.jsx'
 import {connect} from 'react-redux'
+import CartSummary from './cart-summary.jsx'
 
 class ProductList extends Component {
   render() {
     const productSummaries = this.props.products.map( product => {
       return <ProductSummary key={product.get('id')} product={product} />
     })
-    return <div id='productList'> { productSummaries } </div>
+    return (
+      //added CartSummary to the ProductList so that it was nested within the Router.
+      <div>
+        <div id='main'>
+          <div id='productList'> { productSummaries } </div>
+        </div>
+        <div id='side'>
+          <CartSummary />
+        </div>
+      </div>
+    )
   }
+
 }
 
 function mapStateToProps(state) {
