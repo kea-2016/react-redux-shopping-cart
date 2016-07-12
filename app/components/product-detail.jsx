@@ -10,8 +10,6 @@ class ProductDetail extends Component {
     const name = product.get('name')
     const price = product.get('price')
     const addToCart = (e) => {
-      console.log('in add to cart: render')
-      product.get('quantity')
       e.preventDefault()
       this.props.addToCart(id)
     }
@@ -27,8 +25,6 @@ class ProductDetail extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log("iam here",state.get('products').toJS())
-  console.log("iam here",state.get('cart').toJS())
   return {
     products: state.get('products')
   };
